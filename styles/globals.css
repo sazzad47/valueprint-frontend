@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -40,39 +45,6 @@
   --card-border-rgb: 131, 134, 135;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
-
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
-
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
-  }
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -85,23 +57,117 @@ body {
   overflow-x: hidden;
 }
 
-body {
-  color: rbg(--foreground-rgb);
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.nav-product-items-enter {
+  position: absolute;
+  top: 20vh;
+  left: 0;
+  z-index: -1;
+  transform: translateY(-350px);
+}
+.nav-product-items-enter-active {
+  width: 100%;
+  transform: translate(0%);
+  transition: all 300ms ease;
+
+}
+.nav-product-items-exit {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.nav-product-items-exit-active {
+  width: 100%;
+  transform: translateY(-350px);
+  z-index: -1;
+  transition: all 300ms ease;
+}
+.dropdown {
+  transition: 0.15s ease;
 }
 
-a {
-  color: inherit;
+.dropdown.active .arrow {
+  transform: rotate(45deg) translate(-5px, -5px);
+}
+
+.dropdown.active .arrow:before {
+  transform: translate(10px, 0);
+}
+
+.dropdown.active .arrow:after {
+  transform: rotate(90deg) translate(10px, 0);
+}
+
+
+.arrow {
+  width: 13px;
+  height: 17px;
+  display: inline-block;
+  position: relative;
+  bottom: -5px;
+  margin-right: 10px;
+  transition: 0.4s ease;
+  margin-top: 2px;
+  text-align: left;
+  transform: rotate(45deg);
+  float: right;
+}
+
+.arrow:before,
+.arrow:after {
+  position: absolute;
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 3px;
+  background-color: #fff;
+  transition: 0.4s ease;
+}
+
+.arrow:after {
+  position: absolute;
+  transform: rotate(90deg);
+  top: -5px;
+  left: 5px;
+}
+
+.wrapper {
+  padding: 2rem 8rem;
+
+}
+
+.skewed-bg {
+  background: #00B285;
+  padding: 200px 0;
+  transform: skew(0deg, -10deg);
+  margin-top: -200px;
+}
+
+.skewed-bg .content {
+  transform: skew(0deg, 10deg);
+  text-align: center;
+}
+
+.skewed-bg .content .title {
+  padding-top: 100px;
+  font-weight: normal;
+}
+
+.skewed-bg .content .text {
+  width: 60%;
+  margin: 25px auto;
+  color: lighten(#00B285, 55);
+}
+
+.footer {
+  padding-top: 300px;
+}
+
+.footer .credits {
+  text-align: center;
+  color: #666;
+}
+
+.footer .credits .link {
+  color: #00B285;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
